@@ -7,8 +7,8 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
 }
 
 // Zieladresse
-$to = "bel@beludwig.ch";
-$subject = "Kontaktformular – beludwig.ch";
+$to = "info@hjms.ch";
+$subject = "Kontaktformular – hjms.ch";
 
 // Eingaben
 $first = trim($_POST["first"] ?? "");
@@ -42,8 +42,8 @@ $body .= "Mitteilung:\n{$msg}\n";
 // WICHTIG für Zustellbarkeit:
 // From sollte idealerweise eine Adresse der eigenen Domain sein.
 // Wenn Du noch keine Mailbox hast, nimm z.B. info@beludwig.ch oder no-reply@beludwig.ch (muss bei manchen Setups existieren).
-$fromAddress = "bel@beludwig.ch";
-$fromName = "beludwig.ch Website";
+$fromAddress = "info@hjms.ch";
+$fromName = "hjms.ch Website";
 
 $headers = [];
 $headers[] = "MIME-Version: 1.0";
