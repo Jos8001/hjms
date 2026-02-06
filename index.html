@@ -1,1 +1,535 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HJMS – Digitalisierung | Digitale Transformation | Leadership</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --ink:#111827;
+      --muted:#6b7280;
+      --line:#e5e7eb;
+      --accent:#8b1f2d;     /* HJMS rot/bordeaux */
+      --dot:#f4b400;        /* gelber Punkt */
+      --soft:#f9fafb;
+      --container: 980px;
+    }
+
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family:Montserrat, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--ink);
+      background:#fff;
+      line-height:1.6;
+    }
+    a{ color:inherit; text-decoration:none; }
+
+    /* Header */
+    .header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:#fff;
+      border-bottom:1px solid rgba(0,0,0,0.05);
+    }
+    .header-inner{
+      max-width:var(--container);
+      margin:0 auto;
+      padding:18px 18px 14px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:10px;
+    }
+    .brand{
+      font-weight:700;
+      letter-spacing:0.12em;
+      font-size:34px;
+      text-transform:uppercase;
+    }
+    .nav{
+      display:flex;
+      gap:34px;
+      align-items:center;
+      justify-content:center;
+    }
+    .nav a{
+      font-size:12px;
+      letter-spacing:0.14em;
+      text-transform:uppercase;
+      color:#111827;
+      opacity:0.75;
+      padding:10px 2px;
+      border-bottom:2px solid transparent;
+    }
+    .nav a:hover{ opacity:1; }
+    .nav a.active{
+      opacity:1;
+      border-bottom-color:rgba(0,0,0,0.18);
+    }
+
+    section{ scroll-margin-top:92px; }
+
+    .wrap{
+      max-width:var(--container);
+      margin:0 auto;
+      padding:0 18px;
+    }
+
+    /* HERO (viel Weissraum, grosse graue Claim-Zeilen) */
+    .hero{
+      padding:64px 0 18px;
+    }
+    .hero-claim{
+      text-align:center;
+      color:#d1d5db;
+      font-weight:600;
+      font-size:44px;
+      letter-spacing:-0.01em;
+      line-height:1.25;
+      margin:140px 0 36px;  /* grosses weisses Feld oben wie PDF */
+    }
+    .hero-claim .pipe{ margin:0 10px; color:#d1d5db; }
+    .intro{
+      text-align:center;
+      padding:0 0 40px;
+    }
+    .intro h2{
+      margin:0 auto 14px;
+      max-width:860px;
+      color:var(--accent);
+      font-size:26px;
+      font-weight:700;
+      letter-spacing:-0.01em;
+    }
+    .intro h2 .dot{ color:var(--dot); }
+    .intro p{
+      margin:0 auto;
+      max-width:840px;
+      color:#374151;
+      font-size:14px;
+      font-weight:300;
+    }
+    .intro .em{
+      color:var(--accent);
+      font-weight:500;
+      margin-top:18px;
+    }
+
+    /* Angebots-Box */
+    .card{
+      border:1px solid rgba(0,0,0,0.06);
+      padding:54px 46px;
+      margin:46px 0 30px;
+      background:#fff;
+    }
+    .card h2{
+      text-align:center;
+      margin:0 0 34px;
+      color:var(--accent);
+      font-size:28px;
+      font-weight:700;
+    }
+    .card h2 .dot{ color:var(--dot); }
+
+    .two-col{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:60px;
+      align-items:start;
+    }
+
+    .kicker{
+      color:var(--accent);
+      font-weight:700;
+      margin:0 0 18px;
+      font-size:22px;
+      line-height:1.25;
+    }
+
+    .section-title{
+      font-weight:700;
+      margin:20px 0 8px;
+      font-size:18px;
+      color:#111827;
+    }
+    .p{
+      margin:0 0 12px;
+      color:#374151;
+      font-size:14px;
+      font-weight:300;
+    }
+    ul.q{
+      margin:14px 0 0;
+      padding-left:18px;
+      color:#374151;
+      font-size:14px;
+      font-weight:300;
+    }
+    ul.q li{ margin:10px 0; }
+
+    /* Partner-Foto Block */
+    .partner{
+      text-align:center;
+      padding:34px 0 54px;
+    }
+    .partner img{
+      width:320px;
+      max-width:100%;
+      border-radius:2px;
+      box-shadow:0 12px 28px rgba(0,0,0,0.12);
+      display:block;
+      margin:0 auto;
+    }
+    .partner .cap{
+      margin-top:18px;
+      color:#374151;
+      font-size:14px;
+      font-weight:400;
+    }
+
+    /* Kontakt (Form bleibt wie bei Dir) */
+    .contact-hero{
+      padding:54px 0 22px;
+    }
+    .contact-hero h2{
+      margin:0;
+      text-align:center;
+      color:var(--accent);
+      font-size:28px;
+      font-weight:700;
+    }
+    .contact-hero h2 .dot{ color:var(--dot); }
+    .contact-grid{
+      display:grid;
+      grid-template-columns: 280px 1fr;
+      gap:50px;
+      align-items:start;
+      padding:22px 0 70px;
+    }
+    .addr{
+      font-size:12px;
+      color:#6b7280;
+      line-height:1.8;
+      white-space:pre-line;
+    }
+
+    label{
+      display:block;
+      font-size:10px;
+      letter-spacing:0.06em;
+      text-transform:uppercase;
+      color:#6b7280;
+      margin:14px 0 6px;
+    }
+    .req{ color:#ef4444; margin-left:4px; }
+
+    input, textarea{
+      width:100%;
+      border:1px solid #d1d5db;
+      padding:10px 10px;
+      font-family:inherit;
+      font-size:12px;
+      outline:none;
+      background:#fff;
+    }
+    input:focus, textarea:focus{
+      border-color:#9ca3af;
+      box-shadow:0 0 0 3px rgba(156,163,175,0.25);
+    }
+
+    .name-row{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+    }
+    textarea{ min-height:120px; resize:vertical; }
+
+    .btn{
+      display:inline-block;
+      margin-top:16px;
+      background:#e5e7eb;
+      border:1px solid #e5e7eb;
+      color:#111827;
+      padding:8px 18px;
+      font-size:10px;
+      letter-spacing:0.08em;
+      text-transform:uppercase;
+      cursor:pointer;
+    }
+    .btn:hover{ filter:brightness(0.97); }
+
+    .footer-note{
+      max-width:var(--container);
+      margin:0 auto;
+      padding:0 18px 40px;
+      color:#9ca3af;
+      font-size:12px;
+    }
+
+    @media (max-width: 920px){
+      .two-col{ grid-template-columns:1fr; gap:34px; }
+      .card{ padding:40px 22px; }
+      .hero-claim{ font-size:34px; margin:110px 0 30px; }
+      .contact-grid{ grid-template-columns:1fr; }
+    }
+    @media (max-width: 520px){
+      .brand{ font-size:28px; }
+      .nav{ gap:18px; }
+      .hero-claim{ font-size:28px; margin:84px 0 26px; }
+      .name-row{ grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <div class="brand">HJMS</div>
+      <nav class="nav" aria-label="Hauptnavigation">
+        <a href="#home" class="navlink active">HOME</a>
+        <a href="#kontakt" class="navlink">CONTACT</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HOME -->
+  <section id="home">
+    <div class="wrap hero">
+      <div class="hero-claim">
+        Digitalisierung <span class="pipe">|</span> Digitale
+        <br>
+        Transformation <span class="pipe">|</span> Leadership
+      </div>
+
+      <div class="intro">
+        <h2>Die Digitalisierung stellt hohe Anforderungen an eine Organisation und das Leadership<span class="dot">.</span></h2>
+
+        <p class="p em">
+          Auch bei disruptiven Entwicklungen, die wir uns heute kaum vorstellen können,
+          <br>
+          wird in Zukunft rückblickend klar sein, dass es so kommen musste.
+        </p>
+
+        <p class="p" style="margin-top:18px;">
+          Die technologische Entwicklung ist seit Jahrzehnten unaufhaltsam, und neue Technologie etablieren sich immer schneller.
+          <br>
+          Wir unterstützen Ihre Organisation bei der digitalen Transformation: einerseits bei der Planung und erfolgreichen Umsetzung
+          strategischer Projekte, andererseits mit Karriere- und Führungs-Coaching.
+          <br>
+          In unseren Beratungs-Schwerpunkten haben wir alle langjährige Erfahrung. Entweder haben wir früher als ehemalige Partner
+          und Senior Consultant globaler Beratungsfirmen für unsere Kunden grosse Projekte geleitet, oder wir waren ausgewiesene
+          Führungskräfte auf der obersten Leitungsebene –
+        </p>
+      </div>
+
+      <div class="card" id="angebot">
+        <h2>Unser Angebot<span class="dot">.</span></h2>
+
+        <div class="two-col">
+          <!-- LINKS -->
+          <div>
+            <div class="kicker">Unsere Kompetenzen und<br>Schwerpunkte<span style="color:var(--dot)">.</span></div>
+
+            <div class="section-title">Digitale Transformation</div>
+            <p class="p">
+              Die Digitalisierung ist in vollem Gange und stellt besondere Anforderungen an viele Unternehmen.
+              Und auch an das Leadership dieser Unternehmen. Es gibt klare Attribute, die einen effektiven digitalen Leader auszeichnen.
+              Die digitale Transformation ist keine einmalige Aufgabe, sondern eine laufende Herausforderung.
+            </p>
+            <p class="p">
+              Die digitale Strategie weist den Weg: die gewinnbringenden Aspirationen der Organisation, der entsprechende Fokus auf Märkte
+              und Kunden, der Einsatz digitaler Technologien sowie die notwendigen Fähigkeiten und Management Systeme, um zu gewinnen.
+            </p>
+            <p class="p">
+              Mitarbeitende, Prozesse, Strukturen und Unternehmenskultur.
+            </p>
+
+            <p class="p" style="margin-top:14px;">Mögliche Fragen, bei denen wir Sie unterstützen können:</p>
+            <ul class="q">
+              <li>Was bedeutet die Digitalisierung für unsere Organisation?</li>
+              <li>Wie entdecke ich die Chancen der Digitalisierung für unsere Organisation?</li>
+              <li>Wie hoch ist der digitale Reifegrad unsere Organisation, um das Potential der digitalen Transformation zu nutzen?</li>
+              <li>Was zeichnet Organisationen mit einem hohen digitalen Reifegrad aus?</li>
+              <li>Was sind die Anforderungen an das Leadership meiner Organisation?</li>
+              <li>Was bedeutet es, ein effektiver digitaler Leader zu sein?</li>
+              <li>Wie können wir den digitalen Reifegrad unserer Organisation laufend erhöhen?</li>
+            </ul>
+          </div>
+
+          <!-- RECHTS -->
+          <div>
+            <div class="kicker">Zusammenarbeit<span style="color:var(--dot)">.</span></div>
+
+            <p class="p">
+              Der erste Schritt ist ein persönliches Gespräch, damit wir Ihre Situation und Fragestellung verstehen.
+              Dieses Erstgespräch kann in unseren Räumlichkeiten in der Züricher Altstadt oder virtuell stattfinden.
+            </p>
+            <p class="p">
+              Wenn wir zum Schluss kommen, dass eine Zusammenarbeit interessant sein könnte, gibt es verschiedene Möglichkeiten.
+            </p>
+
+            <div class="section-title" style="margin-top:18px;">Situationsanalyse</div>
+            <p class="p">
+              Oft starten wir die Zusammenarbeit mit einer vertieften Analyse, um Ihre Situation und Fragestellungen genau zu verstehen.
+              Erfahrungsgemäss beträgt der Aufwand ein paar Tage. Das Resultat ist eine Auslegeordnung aus unserer unabhängigen Sicht und ein …
+            </p>
+
+            <div class="section-title" style="margin-top:18px;">Reifegrad»</div>
+            <p class="p">
+              Es gibt klare Kriterien, um den digitalen Reifegrad einer Organisation zu messen. Mit anderen Worten: wie hoch ist die Fähigkeit
+              Ihrer Organisation, die laufenden Herausforderungen der Digitalisierung erfolgreich zu meistern?
+              Unser unabhängiges Assessment gibt dazu Antworten.
+            </p>
+
+            <div class="section-title" style="margin-top:22px;">Karriere- und Führungs-Coaching</div>
+            <p class="p">
+              Als Ihr Coach sind wir parteiisch. Wir stehen ausschliesslich auf Ihrer Seite. Unser Ziel ist es, Ihnen zu helfen, damit Sie die
+              für sich richtige Lösung oder Antwort finden. Was wir miteinander besprechen bleibt absolut vertraulich.
+            </p>
+            <p class="p">
+              Coaching ist eine ziel- und lösungsorientierte Form der Unterstützung und Beratung von Menschen in Lern- und Entwicklungsprozessen.
+              Dabei werden Probleme, Ziele, Visionen und Ressourcen geklärt, persönliches Feedback gegeben, Bewältigungs- und Umsetzungsstrategien
+              erarbeitet und trainiert. Die Dauer eines …
+            </p>
+
+            <div class="section-title" style="margin-top:22px;">Führungs-Coaching</div>
+            <p class="p">
+              Als langjährige Führungspersönlichkeiten haben wir die „Einsamkeit an der Spitze“ selbst kennen gelernt. Die rasante technologische
+              Entwicklung und damit verbundene Herausforderungen stellen hohe Ansprüche an das Leadership. Es kann sinnvoll sein, in gewissen
+              Situationen das Gespräch mit einem erfahrenen, aussenstehenden und vertrauenswürdigen Coach zu führen.
+            </p>
+
+            <div class="section-title" style="margin-top:22px;">Karriere-Coaching</div>
+            <p class="p">
+              Wir haben alle unsere Karriere erfolgreich abgeschlossen. Mit dieser Erfahrung unterstützen wir Sie gerne bei Fragestellungen in Bezug
+              auf Ihre Karriere, insbesondere an deren Anfang oder Weiterentwicklung. Viele Unsicherheiten und Selbstzweifel haben wir persönlich erlebt,
+              gerne teilen wir diesen reichhaltigen Erfahrungsschatz mit Ihnen.
+            </p>
+
+            <div class="section-title" style="margin-top:22px;">… und Projekt-Reviews</div>
+            <p class="p">
+              Projekte laufen leider oft nicht so wie geplant. Wir wissen das aus eigener Erfahrung. Dabei haben wir gelernt, was die wesentlichen Faktoren
+              für erfolgreiche Projekte sind. Stellen sich bei Ihren Projekten Fragen, sei es wie ein Projekt am besten strukturiert und geplant wird oder
+              wie es wieder auf Kurs kommt? Meistens bringt ein unabhängiger Projekt Review Klarheit und beantwortet diese Fragen.
+            </p>
+
+            <div class="section-title" style="margin-top:22px;">Einsatz im Projekt Steuerungsausschuss</div>
+            <p class="p">
+              Der Projekt Steuerungsausschuss (Steering Committee) ist die oberste Instanz und letztlich für die erfolgreiche Umsetzung eines Projektes
+              verantwortlich. Brauchen Sie in Ihrem Projekt Steuerungsausschuss zusätzliche Kapazitäten und Kompetenzen oder eine unabhängige Beurteilung
+              während der Laufzeit des Projektes? Wir können diese Aufgabe wahrnehmen.
+            </p>
+
+            <p class="p" style="margin-top:14px;">
+              Ihr Bedarf unseren Kompetenzen entspricht, so können wir diese langfristige Aufgabe übernehmen. Voraussetzung ist, dass wir die gegenseitigen
+              Erwartungen gut verstehen und klären.
+            </p>
+          </div>
+        </div>
+
+        <div style="margin-top:26px;">
+          <p class="p"><strong>Projektbegleitung</strong><br>
+            Eine sorgfältige Projektplanung ist Voraussetzung, aber nicht Garantie für ein erfolgreiches Projekt.
+            Ebenso wichtig sind ein sauberes Projekt-Controlling und die Projektbegleitung. Besondere Bedeutung kommt dabei dem Projekt-Steuerungsausschuss
+            (Steering Committee) als oberste Projekt-Instanz zu, die letztlich für die erfolgreiche Umsetzung des Projektes verantwortlich ist.
+          </p>
+
+          <p class="p" style="margin-top:14px;">Mögliche Fragen, bei denen wir Sie unterstützen können:</p>
+          <ul class="q">
+            <li>Wie sollen wir vorgehen, um dieses anspruchsvolle und komplexe Projekt zu planen?</li>
+            <li>Was müssen wir bei der Projektplanung berücksichtigen?</li>
+            <li>Was braucht es für eine Projektorganisation?</li>
+            <li>Wie machen wir für dieses wichtige Projekt das Projekt-Controlling?</li>
+            <li>Wir haben nun 6 Monate Projektarbeit hinter uns, und das Projekt droht zu scheitern. Wie können wir das Projekt retten?</li>
+            <li>Haben wir die notwendigen zeitlichen Kapazitäten oder Kompetenzen für eine professionelle Projektbegleitung?</li>
+            <li>Wie erkennen wir frühzeitig die Risiken dieses Projektes?</li>
+            <li>Was sind die wesentlichen Faktoren, damit wir das Projekt erfolgreich umsetzen können?</li>
+          </ul>
+        </div>
+
+        <div class="partner">
+          <img src="jos.jpg" alt="Dr. Jos Hehli" onerror="this.style.display='none';">
+          <div class="cap">Dr. Jos Hehli, Managing Partner</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KONTAKT -->
+  <section id="kontakt">
+    <div class="wrap">
+      <div class="contact-hero">
+        <h2>Kontakt<span class="dot">.</span></h2>
+      </div>
+
+      <div class="contact-grid">
+        <div class="addr">HJMS AG
+CH-8001 Zürich</div>
+
+        <!-- Kontaktformular: exakt wie vorher belassen -->
+        <form action="send.php" method="post">
+          <label for="first">Name<span class="req">*</span></label>
+          <div class="name-row">
+            <input id="first" name="first" type="text" placeholder="First" required>
+            <input id="last" name="last" type="text" placeholder="Last" required>
+          </div>
+
+          <label for="email">E-Mail<span class="req">*</span></label>
+          <input id="email" name="email" type="email" placeholder="" required>
+
+          <label for="msg">Mitteilung<span class="req">*</span></label>
+          <textarea id="msg" name="message" required></textarea>
+
+          <div style="position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;">
+            <label for="website">Website</label>
+            <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+          </div>
+
+          <button class="btn" type="submit">Senden</button>
+
+          <p id="thanks" style="display:none; font-size:11px; color:#4b5563; margin-top:14px;">
+            Danke, Ihre Nachricht wurde gesendet.
+          </p>
+        </form>
+      </div>
+
+      <div class="footer-note">Eine Webseite von Weebly. Verwaltet von WEBLAND.CH</div>
+    </div>
+  </section>
+
+  <script>
+    // Active Nav Link on scroll
+    const links = Array.from(document.querySelectorAll('.navlink'));
+    const sections = links.map(a => document.querySelector(a.getAttribute('href')));
+
+    const setActive = () => {
+      const y = window.scrollY + 120;
+      let idx = 0;
+      for (let i = 0; i < sections.length; i++){
+        if (sections[i] && sections[i].offsetTop <= y) idx = i;
+      }
+      links.forEach(l => l.classList.remove('active'));
+      if (links[idx]) links[idx].classList.add('active');
+    };
+
+    window.addEventListener('scroll', setActive, { passive:true });
+    window.addEventListener('load', setActive);
+
+    // Danke-Hinweis nach Redirect (?sent=1)
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("sent") === "1") {
+      const thanks = document.getElementById("thanks");
+      if (thanks) thanks.style.display = "block";
+    }
+  </script>
+</body>
+</html>
 
