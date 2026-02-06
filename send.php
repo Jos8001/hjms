@@ -39,9 +39,7 @@ $body .= "Name: {$first} {$last}\n";
 $body .= "E-Mail: {$email}\n\n";
 $body .= "Mitteilung:\n{$msg}\n";
 
-// WICHTIG für Zustellbarkeit:
-// From sollte idealerweise eine Adresse der eigenen Domain sein.
-// Wenn Du noch keine Mailbox hast, nimm z.B. info@beludwig.ch oder no-reply@beludwig.ch (muss bei manchen Setups existieren).
+// WICHTIG für Zustellbarkeit: From sollte auf eigener Domain sein
 $fromAddress = "info@hjms.ch";
 $fromName = "hjms.ch Website";
 
@@ -54,7 +52,6 @@ $headers[] = "X-Content-Type-Options: nosniff";
 
 $ok = mail($to, $subject, $body, implode("\r\n", $headers));
 
-// Redirect zurück mit Status
 if ($ok) {
     header("Location: index.html?sent=1#kontakt");
 } else {
